@@ -2,9 +2,12 @@ function App() {
   return (
     <div>
       <header>
-        <h1>NILUFER TIGER</h1>
-        <h2>SAY MY name</h2>
-        <h3>niluferin degisiklik</h3>
+
+        <h1>Hello Code Cloud</h1>
+        <h2>Ben bi h2 eklesem bir başkası h3 eklese. Bunu çekmeden</h2>
+
+        <h3>merhaba marslılar</h3>
+
 
       </header>
     </div>
