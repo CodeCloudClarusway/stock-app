@@ -10,8 +10,7 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
-
-
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -109,8 +108,8 @@ export default function Dashboard() {
               Dashboard
             </Typography>
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
+              <Badge  color="secondary">
+                <ExitToAppIcon />
               </Badge>
             </IconButton>
           </Toolbar>
@@ -130,7 +129,7 @@ export default function Dashboard() {
           </Toolbar>
           <Divider />
           <List component="nav">
-           <MenuListItems/>
+            <MenuListItems />
           </List>
         </Drawer>
         <Box
@@ -146,7 +145,6 @@ export default function Dashboard() {
           }}
         >
           <Toolbar />
-         
         </Box>
       </Box>
     </ThemeProvider>

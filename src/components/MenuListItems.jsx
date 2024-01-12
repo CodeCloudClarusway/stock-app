@@ -11,7 +11,9 @@ import ReceiptIcon from "@material-ui/icons/Receipt";
 import ShopTwoIcon from "@material-ui/icons/ShopTwo";
 import ConfirmationNumberIcon from "@material-ui/icons/ConfirmationNumber";
 import BrandingWatermarkIcon from "@material-ui/icons/BrandingWatermark";
+import { useNavigate } from "react-router-dom/dist";
 const MenuListItems = () => {
+  const navigate = useNavigate();
   const listItems = [
     {
       icon: <DashboardCustomizeIcon />,
@@ -47,7 +49,13 @@ const MenuListItems = () => {
   return (
     <>
       {listItems.map((item) => (
-        <ListItem>
+        <ListItem
+        sx={{
+            "&:hover":{backgroundColor:"rgba(0,120,0,0.3)",
+            color:"white"}, "&:hover .MuiSvgIcon-root":{
+            color:"white"}
+        }}
+         onClick={() => navigate(item.url)}>
           <ListItemButton>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.title} />
