@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import useStockCalls from "../services/useStockCalls";
 
 const Firms = () => {
-  return (
-    <div>Firms</div>
-  )
-}
+  const { firms } = useSelector((state) => state.stock);
+  const { getStocks } = useStockCalls();
+  useEffect(() => {
+    getStocks("firms");
+  }, []);
+  console.log(firms);
 
-export default Firms
+  return <div>Firms</div>;
+};
+
+export default Firms;

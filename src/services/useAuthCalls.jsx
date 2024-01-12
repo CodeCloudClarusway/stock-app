@@ -36,6 +36,7 @@ export const useAuthCalls = () => {
       dispatch(logoutSuccess());
     } catch (error) {
       dispatch(fetchFail());
+      console.log(error);
     }
   };
   return { login, logout };

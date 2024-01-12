@@ -16,6 +16,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MenuListItems from "../components/MenuListItems";
 import { Outlet } from "react-router";
+import { useAuthCalls } from "../services/useAuthCalls";
 
 const drawerWidth = 240;
 
@@ -36,6 +37,7 @@ const AppBar = styled(MuiAppBar, {
     }),
   }),
 }));
+
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -67,6 +69,7 @@ const Drawer = styled(MuiDrawer, {
 const defaultTheme = createTheme();
 
 export default function Dashboard() {
+    const { logout } = useAuthCalls();
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -103,7 +106,7 @@ export default function Dashboard() {
             >
               Dashboard
             </Typography>
-            <IconButton color="inherit">
+            <IconButton onClick={logout} color="inherit">
               <Badge color="secondary">
                 <ExitToAppIcon /> <span variant=""> LOGOUT</span>
               </Badge>
