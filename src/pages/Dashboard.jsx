@@ -108,8 +108,8 @@ export default function Dashboard() {
               Dashboard
             </Typography>
             <IconButton color="inherit">
-              <Badge  color="secondary">
-                <ExitToAppIcon />
+              <Badge color="secondary">
+                <ExitToAppIcon /> <span variant=""> LOGOUT</span>
               </Badge>
             </IconButton>
           </Toolbar>
