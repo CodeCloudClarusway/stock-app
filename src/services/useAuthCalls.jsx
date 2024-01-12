@@ -7,12 +7,12 @@ import { useNavigate } from "react-router-dom/dist";
 export const useAuthCalls = () => {
   const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const login = async (userInfo) => {
-    dispath(fetchStart());
+    dispatch(fetchStart());
     try {
       const { data } = await axios.post(`${BASE_URL}/auth/login/`, userInfo);
-      dispath(loginSuccess(data));
+      dispatch(loginSuccess(data));
       navigate("/stock");
       console.log(data);
       alert("login success");
