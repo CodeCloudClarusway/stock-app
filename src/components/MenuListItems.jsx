@@ -17,32 +17,32 @@ const MenuListItems = () => {
   const listItems = [
     {
       icon: <DashboardCustomizeIcon />,
-      url: "/stock",
+      url: "/stock/",
       title: "Dashboard",
     },
     {
       icon: <ProductionQuantityLimitsIcon />,
-      url: "/products",
+      url: "/stock/products/",
       title: "Products",
     },
     {
       icon: <ReceiptIcon />,
-      url: "/sales",
+      url: "/stock/sales/",
       title: "Sales",
     },
     {
       icon: <ShopTwoIcon />,
-      url: "/purchases",
+      url: "/stock/purchases/",
       title: "Purchases",
     },
     {
       icon: <ConfirmationNumberIcon />,
-      url: "/firms",
+      url: "/stock/firms/",
       title: "Firms",
     },
     {
       icon: <BrandingWatermarkIcon />,
-      url: "/brands",
+      url: "/stock/brands/",
       title: "Brands",
     },
   ];
@@ -50,12 +50,14 @@ const MenuListItems = () => {
     <>
       {listItems.map((item) => (
         <ListItem
-        sx={{
-            "&:hover":{backgroundColor:"rgba(0,120,0,0.3)",
-            color:"white"}, "&:hover .MuiSvgIcon-root":{
-            color:"white"}
-        }}
-         onClick={() => navigate(item.url)}>
+          sx={{
+            "&:hover": { backgroundColor: "rgba(0,120,0,0.3)", color: "white" },
+            "&:hover .MuiSvgIcon-root": {
+              color: "white",
+            },
+          }}
+          onClick={() => navigate(item.url)}
+        >
           <ListItemButton>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.title} />

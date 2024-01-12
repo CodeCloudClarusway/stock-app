@@ -15,11 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MenuListItems from "../components/MenuListItems";
-
-
-
-
-
+import { Outlet } from "react-router";
 
 const drawerWidth = 240;
 
@@ -145,6 +141,7 @@ export default function Dashboard() {
           }}
         >
           <Toolbar />
+          <Outlet />
         </Box>
       </Box>
     </ThemeProvider>
