@@ -5,21 +5,26 @@ import { getStockSuccess } from "../features/stockSlice";
 const useStockCalls = () => {
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const BaseUrl = process.env.REACT_APP_BASE_URL;
 
   const getStocks = async (url = "firms") => {
-    const BaseUrl = process.env.REACT_APP_BASE_URL;
-
     try {
       const { data } = await axios(`${BaseUrl}/${url}/`, {
-        headers: {  Authorization: `Token ${token}` },
+        headers: { Authorization: `Token ${token}` },
       });
       const apiData = data.data;
-      dispatch(getStockSuccess({ apiData,url}));
+      dispatch(getStockSuccess({ apiData, url }));
     } catch (error) {
       console.log(error);
     }
   };
-  return { getStocks };
+  const deleteStock = async (url, id) => {
+    await axios.delete(`${BaseUrl}/${url}/${id}`, {
+      headers: { Authorization: `Token ${token}` },
+    });
+    getStocks(url);
+  };
+  return { getStocks, deleteStock };
 };
 
 export default useStockCalls;
