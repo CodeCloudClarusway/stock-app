@@ -9,6 +9,8 @@ import CardModal from "../components/CardModal";
 const Firms = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
+ 
+
   const handleClose = () => {
     setInfo({ name: "", phone: "", address: "", image: "" });
     setOpen(false);
@@ -19,12 +21,14 @@ const Firms = () => {
     address: "",
     image: "",
   });
+
   const { firms } = useSelector((state) => state.stock);
   const { getStocks } = useStockCalls();
   useEffect(() => {
     getStocks("firms");
   }, []);
-  console.log(firms);
+  
+  
 
   return (
     <div>
@@ -41,6 +45,7 @@ const Firms = () => {
         setOpen={setOpen}
         info={info}
         setInfo={setInfo}
+       
       />
 
       <Grid container gap={2} mt={3} justifyContent={"center"}>

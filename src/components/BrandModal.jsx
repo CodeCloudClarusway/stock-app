@@ -18,7 +18,7 @@ const style = {
   p: 4,
 };
 
-export default function CardModal({ open, handleClose, info, setInfo }) {
+export default function BrandModal({ open, handleClose, info, setInfo }) {
   const { createFirms, putFirms } = useStockCalls();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,9 +27,9 @@ export default function CardModal({ open, handleClose, info, setInfo }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (info._id) {
-      putFirms("firms", info._id, info);
+      putFirms("brands", info._id, info);
     } else {
-      createFirms("firms", info);
+      createFirms("brands", info);
     }
 
     handleClose();
@@ -56,22 +56,7 @@ export default function CardModal({ open, handleClose, info, setInfo }) {
               value={info.name}
               onChange={handleChange}
             />
-            <TextField
-              id="outlined-basic"
-              label="Phone"
-              name="phone"
-              variant="outlined"
-              value={info.phone}
-              onChange={handleChange}
-            />
-            <TextField
-              id="outlined-basic"
-              label="Address"
-              name="address"
-              variant="outlined"
-              value={info.address}
-              onChange={handleChange}
-            />
+
             <TextField
               id="outlined-basic"
               name="image"
