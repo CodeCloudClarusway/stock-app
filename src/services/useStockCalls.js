@@ -24,7 +24,29 @@ const useStockCalls = () => {
     });
     getStocks(url);
   };
-  return { getStocks, deleteStock };
+  const createFirms = async (url = "firms", info) => {
+    try {
+      await axios.post(`${BaseUrl}/${url}/`, info, {
+        headers: { Authorization: `Token ${token}` },
+      });
+      getStocks(url);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+   const putFirms = async (url = "firms", id, info) => {
+     try {
+       await axios.put(`${BaseUrl}/${url}/${id}`, info, {
+         headers: { Authorization: `Token ${token}` },
+       });
+       getStocks(url);
+     } catch (error) {
+       console.log(error);
+     }
+   };
+
+
+  return { getStocks, deleteStock, createFirms,putFirms };
 };
 
 export default useStockCalls;
