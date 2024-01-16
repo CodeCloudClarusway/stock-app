@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import useStockCalls from "../services/useStockCalls";
@@ -67,3 +68,4 @@ const Firms = () => {
 };
 
 export default Firms;
+
