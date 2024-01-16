@@ -1,18 +1,24 @@
 import axios from "axios";
 import React from "react";
-import { useDispatch } from "react-redux";
-import { fetchStart, loginSuccess } from "../features/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchFail,
+  fetchStart,
+  loginSuccess,
+  logoutSuccess,
+} from "../features/authSlice";
 import { useNavigate } from "react-router-dom/dist";
 
 export const useAuthCalls = () => {
   const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
   const login = async (userInfo) => {
-    dispath(fetchStart());
+    dispatch(fetchStart());
     try {
       const { data } = await axios.post(`${BASE_URL}/auth/login/`, userInfo);
-      dispath(loginSuccess(data));
+      dispatch(loginSuccess(data));
       navigate("/stock");
       console.log(data);
       alert("login success");
@@ -20,5 +26,18 @@ export const useAuthCalls = () => {
       console.log(error);
     }
   };
-  return { login };
+  const logout = async () => {
+    dispatch(fetchStart());
+
+    try {
+      await axios(`${BASE_URL}/auth/logout`, {
+        headers: { Authorization: `Token ${token}` },
+      });
+      dispatch(logoutSuccess());
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+    }
+  };
+  return { login, logout };
 };
