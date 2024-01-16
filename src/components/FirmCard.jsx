@@ -16,7 +16,7 @@ export default function FirmCard({
   setOpen,
   handleClose,
   handleOpen,
-  setInfo,
+  setInfo
 }) {
   const { address, image, name, phone, _id } = firm;
   const { deleteStock } = useStockCalls();
@@ -37,6 +37,9 @@ export default function FirmCard({
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {address}
+        </Typography>
       </CardContent>
       <CardMedia
         component="img"
@@ -46,18 +49,17 @@ export default function FirmCard({
         sx={{ objectFit: "contain" }}
       />
 
+      <Typography variant="body2" color="text.secondary">
+        {phone}
+      </Typography>
+
       <CardActions>
         <DeleteOutlineIcon
           sx={btnStyle}
           onClick={() => deleteStock("firms", _id)}
         />
-        <EditIcon
-          sx={btnStyle}
-          onClick={() => {
-            handleOpen();
-            setInfo(firm);
-          }}
-        />
+        <EditIcon sx={btnStyle} onClick={()=>{handleOpen()
+        setInfo(firm)}} />
       </CardActions>
     </Card>
   );
